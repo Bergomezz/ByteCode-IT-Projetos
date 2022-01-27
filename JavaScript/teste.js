@@ -1,6 +1,7 @@
 const soma = a + b
 
-const a = 2
-const b = 5
+const a = 10
+const b = 31
 
-console.log( soma );
+console.log( soma )
+
