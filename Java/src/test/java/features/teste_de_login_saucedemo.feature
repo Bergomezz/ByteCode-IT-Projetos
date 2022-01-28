@@ -15,5 +15,7 @@
         Quando preenche o username com <usuario> e password com <pass> e clicar no botao de login
         Entao deve receber a <resposta>
         Exemplos:
-        |usuario|pass|resposta|
-        | ""     |"" |""      |
+        |usuario     |pass          |resposta                            |
+        |""          |""            |"Epic sadface: Username is required"|
+        |""          |"secret_sauce"|"Epic sadface: Username is required"|
+        |"stand_user"|""            |"Epic sadface: Password is required"|
