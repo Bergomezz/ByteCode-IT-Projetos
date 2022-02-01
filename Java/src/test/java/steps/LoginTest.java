@@ -9,18 +9,31 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.Response;
 
 public class LoginTest {
 
     WebDriver driver;
+    WebElement nomeProducts;
+
+    private void login(String user, String pass) {
+        driver.findElement(By.id("user-name")).sendKeys(user);
+        driver.findElement(By.id("password")).sendKeys(pass);
+        driver.findElement(By.id("login-button")).sendKeys(Keys.ENTER);
+    }
 
     @Before
     public void browser(){
         System.setProperty("webdriver.chrome.driver", "D:\\Projetos\\ByteCode\\ByteCode-IT-Projetos\\Java\\webdrive\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @After
+    public void fecharAba(){
+        driver.quit();
     }
 
     @Dado("que o usuario esta na pagina de login")
@@ -30,27 +43,27 @@ public class LoginTest {
 
     @Quando("preenche o username com “standard_user” e password com “secret_sauce” e clicar no botao de login")
     public void preenche_o_username_com_standard_user_e_password_com_secret_sauce_e_clicar_no_botao_de_login() {
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).sendKeys(Keys.ENTER);
-
+        login("standard_user","secret_sauce");
     }
+
+
 
     @Entao("deve ter acesso")
     public void deve_ter_acesso() {
-        //Assert.assertEquals("Products", driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span")));
+        nomeProducts = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
+        Assert.assertTrue(nomeProducts.isDisplayed());
     }
 
     @Quando("preenche o username com {string} e password com {string} e clicar no botao de login")
     public void preenche_o_username_com_e_password_com_e_clicar_no_botao_de_login(String usuario, String pass) {
-        driver.findElement(By.id("user-name")).sendKeys(usuario);
-        driver.findElement(By.id("password")).sendKeys(pass);
-        driver.findElement(By.id("login-button")).sendKeys(Keys.ENTER);
+        login(usuario, pass);
     }
 
     @Entao("deve receber a {string}")
     public void deve_receber_a(String resposta) {
-        //Assert.assertEquals(resposta, driver.);
+
+        Assert.assertTrue(driver.getPageSource().contains(resposta));
+
     }
 
 }
