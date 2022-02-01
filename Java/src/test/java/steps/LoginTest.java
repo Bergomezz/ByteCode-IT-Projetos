@@ -11,7 +11,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.Response;
+
+import java.util.Objects;
 
 public class LoginTest {
 
@@ -28,7 +29,6 @@ public class LoginTest {
     public void browser(){
         System.setProperty("webdriver.chrome.driver", "D:\\Projetos\\ByteCode\\ByteCode-IT-Projetos\\Java\\webdrive\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
     }
 
     @After
@@ -41,29 +41,20 @@ public class LoginTest {
         driver.get("https://www.saucedemo.com/");
     }
 
-    @Quando("preenche o username com “standard_user” e password com “secret_sauce” e clicar no botao de login")
-    public void preenche_o_username_com_standard_user_e_password_com_secret_sauce_e_clicar_no_botao_de_login() {
-        login("standard_user","secret_sauce");
-    }
-
-
-
-    @Entao("deve ter acesso")
-    public void deve_ter_acesso() {
-        nomeProducts = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
-        Assert.assertTrue(nomeProducts.isDisplayed());
-    }
-
     @Quando("preenche o username com {string} e password com {string} e clicar no botao de login")
-    public void preenche_o_username_com_e_password_com_e_clicar_no_botao_de_login(String usuario, String pass) {
-        login(usuario, pass);
+    public void preenche_o_username_com_e_password_com_e_clicar_no_botao_de_login(String username, String password) {
+        login(username,password);
+    }
+    @Entao("quando o {string} ocorrer deve receber a {string}")
+    public void quando_o_caso_teste_ocorrer_deve_receber_a(String casoTeste, String resposta) {
+        if (Objects.equals(casoTeste, "valido")){
+            nomeProducts = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
+            Assert.assertTrue(nomeProducts.isDisplayed());
+        }else {
+            Assert.assertTrue(driver.getPageSource().contains(resposta));
+        }
     }
 
-    @Entao("deve receber a {string}")
-    public void deve_receber_a(String resposta) {
 
-        Assert.assertTrue(driver.getPageSource().contains(resposta));
-
-    }
 
 }
