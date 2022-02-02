@@ -26,35 +26,37 @@ public class LoginTest {
     }
 
     @Before
-    public void browser(){
+    public void browser() {
         System.setProperty("webdriver.chrome.driver", "D:\\Projetos\\ByteCode\\ByteCode-IT-Projetos\\Java\\webdrive\\chromedriver.exe");
         driver = new ChromeDriver();
     }
 
     @After
-    public void fecharAba(){
+    public void fecharAba() {
         driver.quit();
     }
 
     @Dado("que o usuario esta na pagina de login")
     public void que_o_usuario_esta_na_pagina_de_login() {
+
         driver.get("https://www.saucedemo.com/");
+
     }
 
     @Quando("preenche o username com {string} e password com {string} e clicar no botao de login")
-    public void preenche_o_username_com_e_password_com_e_clicar_no_botao_de_login(String username, String password) {
-        login(username,password);
+    public void preenche_o_username_com_e_password_com_e_clicar_no_botao_de_login(String usuario, String pass) {
+        login(usuario, pass);
     }
+
     @Entao("quando o {string} ocorrer deve receber a {string}")
     public void quando_o_caso_teste_ocorrer_deve_receber_a(String casoTeste, String resposta) {
-        if (Objects.equals(casoTeste, "valido")){
+        if (Objects.equals(casoTeste, "valido")) {
             nomeProducts = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
             Assert.assertTrue(nomeProducts.isDisplayed());
-        }else {
+        } else {
             Assert.assertTrue(driver.getPageSource().contains(resposta));
         }
     }
-
 
 
 }

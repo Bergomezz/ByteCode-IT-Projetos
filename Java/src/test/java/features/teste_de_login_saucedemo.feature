@@ -22,6 +22,6 @@ Funcionalidade: Testando Login
       | "invalido" | "@asd#"                   | "secret_sauce" | "Epic sadface: Username and password do not match any user in this service" |
       | "invalido" | "@asd#"                   | "123456"       | "Epic sadface: Username and password do not match any user in this service" |
       | "invalido" | "standard_user"           | "@#~"          | "Epic sadface: Username and password do not match any user in this service" |
-      | "invalido" | "123456"                  | "secret_sauce" | "Epic sadface: Username and password do not match any user in this service" |
-      | "invalido" | "123456"                  | "secret_sauce" | "Epic sadface: Username and password do not match any user in this service" |
+      | "invalido" | "@#~"                     | "@#^"          | "Epic sadface: Username and password do not match any user in this service" |
+      | "invalido" | "123456"                  | "123456"       | "Epic sadface: Username and password do not match any user in this service" |
 
