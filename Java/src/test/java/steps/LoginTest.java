@@ -51,8 +51,9 @@ public class LoginTest {
     @Entao("quando o {string} ocorrer deve receber a {string}")
     public void quando_o_caso_teste_ocorrer_deve_receber_a(String casoTeste, String resposta) {
         if (Objects.equals(casoTeste, "valido")) {
-            nomeProducts = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
-            Assert.assertTrue(nomeProducts.isDisplayed());
+            //nomeProducts = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
+            Assert.assertEquals(resposta,driver.getCurrentUrl());
+            System.out.println(driver.getCurrentUrl());
         } else {
             Assert.assertTrue(driver.getPageSource().contains(resposta));
         }

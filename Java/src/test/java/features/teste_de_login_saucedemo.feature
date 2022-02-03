@@ -5,13 +5,13 @@ Funcionalidade: Testando Login
 
   Esquema do Cenario:
     Dado que o usuario esta na pagina de login
-    Quando preenche o username com <usuario> e password com <pass> e clicar no botao de login
+    Quando preenche o username com <usuario> e password com <senha> e clicar no botao de login
     Entao quando o <casoTeste> ocorrer deve receber a <resposta>
     Exemplos:
-      | casoTeste  | usuario                   | pass           | resposta                                                                    |
-      | "valido"   | "standard_user"           | "secret_sauce" | "Products"                                                                  |
-      | "valido"   | "problem_user"            | "secret_sauce" | "Products"                                                                  |
-      | "valido"   | "performance_glitch_user" | "secret_sauce" | "Products"                                                                  |
+      | casoTeste  | usuario                   | senha           | resposta                                                                    |
+      | "valido"   | "standard_user"           | "secret_sauce" | "https://www.saucedemo.com/inventory.html"                                                                  |
+      | "valido"   | "problem_user"            | "secret_sauce" | "https://www.saucedemo.com/inventory.html"                                                                  |
+      | "valido"   | "performance_glitch_user" | "secret_sauce" | "https://www.saucedemo.com/inventory.html"                                                                  |
       | "invalido" | "locked_out_user"         | "secret_sauce" | "Epic sadface: Sorry, this user has been locked out."                       |
       | "invalido" | ""                        | ""             | "Epic sadface: Username is required"                                        |
       | "invalido" | ""                        | "secret_sauce" | "Epic sadface: Username is required"                                        |
