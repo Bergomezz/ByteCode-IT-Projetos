@@ -1,6 +1,5 @@
 #language: pt
 
-
 Funcionalidade: Testando Login
 
   Esquema do Cenario:
