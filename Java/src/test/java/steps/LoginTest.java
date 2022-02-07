@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Objects;
 
+
 public class LoginTest {
 
     WebDriver driver;
@@ -27,8 +28,7 @@ public class LoginTest {
 
     private void assertiva(String casoTeste, String resposta){
         if (Objects.equals(casoTeste, "valido")) {
-            Assert.assertEquals(resposta,driver.getCurrentUrl());
-            System.out.println(driver.getCurrentUrl());
+            Assert.assertEquals(resposta, driver.getCurrentUrl());
         } else {
             Assert.assertTrue(driver.getPageSource().contains(resposta));
         }
